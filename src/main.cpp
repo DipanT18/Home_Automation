@@ -40,7 +40,7 @@
 #include <AsyncTCP.h>
 #include <ArduinoJson.h>
 #include <DHT.h>
-#include <WiFiManager.h>
+#include "WifiPortal.h"
 
 // ─── Pin & sensor configuration ────────────────────────────────────────────
 #define DHT_PIN     4          // GPIO connected to DHT11 DATA line
@@ -102,11 +102,7 @@ void setup() {
     }
 
     // ── WiFiManager captive portal ───────────────────────────────────────────
-    WiFiManager wm;
-    wm.setConfigPortalTimeout(180);   // 3-minute AP, then restart
-    wm.setDebugOutput(false);         // keep Serial clean
-
-    if (!wm.autoConnect(WIFI_AP_NAME)) {
+    if (!runWiFiPortal(WIFI_AP_NAME, 180, false)) {
         Serial.println(F("[WiFi]  Config-portal timed out — restarting"));
         ESP.restart();
     }
