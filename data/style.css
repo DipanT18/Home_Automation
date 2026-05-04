@@ -1,0 +1,194 @@
+/* ======================================================
+   Home Automation Dashboard — style.css
+   Dark-mode responsive layout for ESP32 LittleFS
+   ====================================================== */
+
+/* ---- CSS custom properties ---- */
+:root {
+  --bg:         #0f172a;
+  --card-bg:    #1e293b;
+  --card-hover: #263348;
+  --accent:     #38bdf8;
+  --accent-dim: #0ea5e9;
+  --text:       #e2e8f0;
+  --muted:      #94a3b8;
+  --border:     rgba(255, 255, 255, 0.07);
+  --shadow:     0 8px 32px rgba(0, 0, 0, 0.45);
+  --radius:     18px;
+}
+
+/* ---- Reset ---- */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* ---- Base ---- */
+body {
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ---- Header ---- */
+header {
+  text-align: center;
+  padding: 2.4rem 1rem 1.2rem;
+  border-bottom: 1px solid var(--border);
+}
+
+header h1 {
+  font-size: clamp(1.6rem, 4vw, 2.4rem);
+  color: var(--accent);
+  letter-spacing: 0.02em;
+}
+
+header .subtitle {
+  color: var(--muted);
+  font-size: 0.9rem;
+  margin-top: 0.35rem;
+}
+
+/* ---- Main grid ---- */
+main {
+  flex: 1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.4rem;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 2rem 1.2rem;
+  max-width: 960px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* ---- Cards ---- */
+.card {
+  background: var(--card-bg);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border);
+  padding: 1.8rem 2rem;
+  min-width: 200px;
+  flex: 1 1 200px;
+  text-align: center;
+  transition: transform 0.18s ease, background 0.18s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  background: var(--card-hover);
+}
+
+.card.wide {
+  flex: 1 1 320px;
+  text-align: left;
+}
+
+.card-icon {
+  font-size: 2.6rem;
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+.card-label {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--muted);
+  margin-bottom: 0.8rem;
+}
+
+.card-value {
+  font-size: clamp(2.8rem, 6vw, 4rem);
+  font-weight: 700;
+  color: var(--accent);
+  line-height: 1;
+}
+
+.card-unit {
+  font-size: 1.15rem;
+  color: var(--muted);
+  margin-top: 0.35rem;
+}
+
+.card-sub {
+  font-size: 0.85rem;
+  color: var(--muted);
+  margin-top: 0.4rem;
+}
+
+/* ---- Status rows ---- */
+.status-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.55rem 0;
+  border-bottom: 1px solid var(--border);
+  font-size: 0.9rem;
+}
+
+.status-row:last-child {
+  border-bottom: none;
+}
+
+.status-key {
+  color: var(--muted);
+}
+
+.status-val {
+  color: var(--text);
+  font-weight: 600;
+  text-align: right;
+  max-width: 55%;
+  word-break: break-all;
+}
+
+/* ---- Footer ---- */
+footer {
+  text-align: center;
+  padding: 1.6rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.55rem;
+  border-top: 1px solid var(--border);
+}
+
+.btn-refresh {
+  background: var(--accent);
+  color: #0f172a;
+  border: none;
+  padding: 0.65rem 2rem;
+  border-radius: 50px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.15s, transform 0.12s;
+}
+
+.btn-refresh:hover {
+  background: var(--accent-dim);
+  transform: scale(1.04);
+}
+
+.btn-refresh:active {
+  transform: scale(0.97);
+}
+
+.auto-refresh-label,
+.last-updated {
+  color: var(--muted);
+  font-size: 0.78rem;
+}
+
+/* ---- Responsive tweaks ---- */
+@media (max-width: 480px) {
+  main { padding: 1.2rem 0.8rem; gap: 1rem; }
+  .card { padding: 1.4rem 1.2rem; }
+}
