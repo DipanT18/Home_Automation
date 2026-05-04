@@ -54,7 +54,7 @@ static constexpr unsigned long SENSOR_INTERVAL_MS = 5000UL;
 
 // ─── Wi-Fi AP name used during captive-portal provisioning ─────────────────
 static constexpr const char *WIFI_AP_NAME = "HomeAuto-Setup";
-static constexpr bool WIFI_DEBUG_OUTPUT = false; // keep Serial clean
+static constexpr bool WIFI_DEBUG_OUTPUT = false;
 
 // ─── Global objects ─────────────────────────────────────────────────────────
 DHT              dht(DHT_PIN, DHT_TYPE);
