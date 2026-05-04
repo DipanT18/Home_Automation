@@ -172,7 +172,7 @@ Libraries installed:
 | `tzapu/WiFiManager` | Captive-portal Wi-Fi provisioning |
 
 > **Note on library versions:** This project uses the **esphome-maintained forks** of ESPAsyncWebServer and AsyncTCP (`esphome/ESPAsyncWebServer-esphome ≥3.0` and `esphome/AsyncTCP-esphome ≥2.0`) instead of the original `me-no-dev` versions.  
-> The `me-no-dev` fork defines `HTTP_GET`, `HTTP_POST`, etc. as global enum values, and the esphome fork keeps those names for API compatibility.  
+> Both the `me-no-dev` and esphome forks define `HTTP_GET`, `HTTP_POST`, etc. as global enum values (the esphome fork keeps the same names for API compatibility).  
 > On **espressif32 7.x / Arduino-ESP32 3.x**, WiFiManager pulls in `nghttp/http_parser.h`, which defines the same identifiers.  
 > The collision happens if WiFiManager and ESPAsyncWebServer are included in the **same** translation unit.  
 > This repo avoids the clash by keeping WiFiManager in `src/WiFiPortal.cpp` (separate compilation unit) and only including ESPAsyncWebServer in `src/main.cpp`.
