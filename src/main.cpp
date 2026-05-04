@@ -54,6 +54,7 @@ static constexpr unsigned long SENSOR_INTERVAL_MS = 5000UL;
 
 // ─── Wi-Fi AP name used during captive-portal provisioning ─────────────────
 static constexpr const char *WIFI_AP_NAME = "HomeAuto-Setup";
+static constexpr bool WIFI_DEBUG_OUTPUT = false; // keep Serial clean
 
 // ─── Global objects ─────────────────────────────────────────────────────────
 DHT              dht(DHT_PIN, DHT_TYPE);
@@ -102,7 +103,7 @@ void setup() {
     }
 
     // ── WiFiManager captive portal ───────────────────────────────────────────
-    if (!runWiFiPortal(WIFI_AP_NAME, 180, false)) {
+    if (!runWiFiPortal(WIFI_AP_NAME, 180, WIFI_DEBUG_OUTPUT)) {
         Serial.println(F("[WiFi]  Config-portal timed out — restarting"));
         ESP.restart();
     }
