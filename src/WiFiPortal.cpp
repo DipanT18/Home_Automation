@@ -9,5 +9,6 @@ bool runWiFiPortal(const char *apName, uint16_t timeoutSeconds, bool debugOutput
     WiFiManager wm;
     wm.setConfigPortalTimeout(timeoutSeconds);
     wm.setDebugOutput(debugOutput);
-    return wm.autoConnect(apName);
+    const char *portalName = (apName && *apName) ? apName : "AutoConnectAP";
+    return wm.autoConnect(portalName);
 }
