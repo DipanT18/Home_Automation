@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Home Automation Dashboard</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <header>
+    <h1>&#127968; Home Automation</h1>
+    <p class="subtitle">ESP32 Smart Temperature Monitor</p>
+  </header>
+
+  <main>
+
+    <!-- Temperature card -->
+    <div class="card" id="temp-card">
+      <div class="card-icon">&#127777;&#65039;</div>
+      <div class="card-label">Temperature</div>
+      <div class="card-value" id="temperature">--</div>
+      <div class="card-unit">°C</div>
+      <div class="card-sub" id="temperature-f">-- °F</div>
+    </div>
+
+    <!-- Humidity card -->
+    <div class="card" id="hum-card">
+      <div class="card-icon">&#128167;</div>
+      <div class="card-label">Humidity</div>
+      <div class="card-value" id="humidity">--</div>
+      <div class="card-unit">%</div>
+    </div>
+
+    <!-- Status card -->
+    <div class="card wide" id="status-card">
+      <div class="card-icon">&#128246;</div>
+      <div class="card-label">Device Status</div>
+      <div class="status-row">
+        <span class="status-key">IP Address</span>
+        <span class="status-val" id="ip">--</span>
+      </div>
+      <div class="status-row">
+        <span class="status-key">Hostname</span>
+        <span class="status-val" id="hostname">--</span>
+      </div>
+      <div class="status-row">
+        <span class="status-key">Wi-Fi Signal</span>
+        <span class="status-val" id="rssi">--</span>
+      </div>
+      <div class="status-row">
+        <span class="status-key">Uptime</span>
+        <span class="status-val" id="uptime">--</span>
+      </div>
+      <div class="status-row">
+        <span class="status-key">Free Heap</span>
+        <span class="status-val" id="heap">--</span>
+      </div>
+    </div>
+
+  </main>
+
+  <footer>
+    <button class="btn-refresh" id="refresh-btn" onclick="refresh()">
+      &#8635; Refresh
+    </button>
+    <p class="auto-refresh-label">
+      Auto-refresh in <span id="countdown">10</span> s
+    </p>
+    <p class="last-updated">Last updated: <span id="last-updated">--</span></p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

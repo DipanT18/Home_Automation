@@ -1,0 +1,23 @@
+# PlatformIO build outputs
+.pio/
+.pioenvs/
+
+# PlatformIO IDE files
+.vscode/
+*.code-workspace
+
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db
+desktop.ini
+
+# Compiled objects / archives
+*.o
+*.a
+*.d
+
+# Python cache
+__pycache__/
+*.pyc
