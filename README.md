@@ -172,7 +172,7 @@ Libraries installed:
 | `tzapu/WiFiManager` | Captive-portal Wi-Fi provisioning |
 
 > **Note on library versions:** This project uses the **esphome-maintained forks** of ESPAsyncWebServer and AsyncTCP (`esphome/ESPAsyncWebServer-esphome ≥3.0` and `esphome/AsyncTCP-esphome ≥2.0`) instead of the original `me-no-dev` versions.  
-> The `me-no-dev` fork defines `HTTP_GET`, `HTTP_POST`, etc. as global enum values, and the esphome fork keeps those names for API compatibility.  On **espressif32 7.x / Arduino-ESP32 3.x**, WiFiManager pulls in `nghttp/http_parser.h`, which defines the same identifiers.  That collision still happens if WiFiManager and ESPAsyncWebServer are included in the **same** translation unit.  This repo avoids the clash by keeping WiFiManager in `src/WifiPortal.cpp` (separate compilation unit) and only including ESPAsyncWebServer in `src/main.cpp`.
+> The `me-no-dev` fork defines `HTTP_GET`, `HTTP_POST`, etc. as global enum values, and the esphome fork keeps those names for API compatibility.  On **espressif32 7.x / Arduino-ESP32 3.x**, WiFiManager pulls in `nghttp/http_parser.h`, which defines the same identifiers.  That collision still happens if WiFiManager and ESPAsyncWebServer are included in the **same** translation unit.  This repo avoids the clash by keeping WiFiManager in `src/WiFiPortal.cpp` (separate compilation unit) and only including ESPAsyncWebServer in `src/main.cpp`.
 
 ---
 
@@ -468,7 +468,7 @@ This error occurs when **ESPAsyncWebServer** (including the esphome fork) and **
 
 **Root cause:** ESPAsyncWebServer defines `HTTP_GET`, `HTTP_POST`, `HTTP_DELETE`, etc. as global enum values, and `nghttp/http_parser.h` (pulled in by WiFiManager → WebServer.h) defines the same names.  The compiler sees two declarations for the same identifiers and refuses to compile.
 
-**Fix (already applied):** WiFiManager is isolated in `src/WifiPortal.cpp` so its `WebServer.h` include is compiled separately from ESPAsyncWebServer.  Keep `WiFiManager.h` out of any file that includes `ESPAsyncWebServer.h`.
+**Fix (already applied):** WiFiManager is isolated in `src/WiFiPortal.cpp` so its `WebServer.h` include is compiled separately from ESPAsyncWebServer.  Keep `WiFiManager.h` out of any file that includes `ESPAsyncWebServer.h`.
 
 If you forked this repo and still see the error, ensure your `lib_deps` does **not** contain `me-no-dev/ESPAsyncWebServer` or `me-no-dev/AsyncTCP`.  Delete the `.pio/libdeps` cache folder and rebuild:
 

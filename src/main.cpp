@@ -40,7 +40,7 @@
 #include <AsyncTCP.h>
 #include <ArduinoJson.h>
 #include <DHT.h>
-#include "WifiPortal.h"
+#include "WiFiPortal.h"
 
 // ─── Pin & sensor configuration ────────────────────────────────────────────
 #define DHT_PIN     4          // GPIO connected to DHT11 DATA line
